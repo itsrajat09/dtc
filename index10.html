@@ -69,6 +69,9 @@
 
   </div>
 
+  <!-- ✅ SUCCESS AUDIO -->
+  <audio id="successSound" src="success.mp3" preload="auto"></audio>
+
   <script>
     // 1. Dynamic Height Fix for Mobile
     function setHeight() {
@@ -78,10 +81,11 @@
     window.addEventListener('resize', setHeight);
     setHeight();
 
-    // 2. Format exact date & time like the video
+    // 2. Format Date & Time
     function formatDateTime() {
       const now = new Date();
-      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const months = ["January", "February", "March", "April", "May", "June", 
+                      "July", "August", "September", "October", "November", "December"];
       
       let hours = now.getHours();
       let minutes = now.getMinutes();
@@ -95,7 +99,7 @@
     }
     document.getElementById('current-datetime').innerText = formatDateTime();
 
-    // 3. Exact Animation Timing Logic
+    // 3. Animation + 1 Second Delayed Sound
     setTimeout(() => {
       document.getElementById('connecting-screen').classList.add('hidden');
       
@@ -104,9 +108,18 @@
       
       void successScreen.offsetWidth; 
       successScreen.classList.add('animate-success');
-      
-      // Auto-Redirect seamlessly after 3.5 seconds
+
+      // 🔊 Play sound after 1 second delay
+      setTimeout(() => {
+        const audio = document.getElementById("successSound");
+        audio.play().catch(() => {
+          console.log("Autoplay blocked until user interaction.");
+        });
+      }, 1000);
+
+      // Redirect after 2 seconds
       setTimeout(goToTicket, 2000); 
+
     }, 2200);
 
     // 4. Redirect Function
