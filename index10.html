@@ -4,15 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Payment Successful</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style10.css">
 </head>
+
 <body>
 
+<<<<<<< HEAD
+=======
+  <!-- Success Sound -->
+>>>>>>> 3d9b8ce
   <audio id="success-sound" src="phonepay.mp3" preload="auto"></audio>
 
   <div class="app-container">
-    
+
+    <!-- CONNECTING SCREEN -->
     <div id="connecting-screen" class="screen-view">
       <div class="loader-container">
         <div class="loader-track">
@@ -22,6 +29,7 @@
       </div>
     </div>
 
+    <!-- SUCCESS SCREEN -->
     <div id="success-screen" class="screen-view hidden">
       <div class="success-header">
         <div class="check-circle">
@@ -29,43 +37,66 @@
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
+
         <h1 class="success-title">Payment Successful</h1>
         <p class="success-datetime" id="current-datetime"></p>
       </div>
 
       <div class="receipt-card-container">
         <div class="receipt-card">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d9b8ce
           <div class="receipt-top-row">
             <div class="profile-info">
               <div class="avatar">
                 <img src="https://ui-avatars.com/api/?name=Anamar&background=c084fc&color=fff&font-size=0.4" alt="Profile">
               </div>
+
               <div class="name-block">
-                <h2 class="payee-name" title="ANAMAR TECHNOLOGIES PRIVATE LIMITED">ANAMAR TECHNOLOGIES...</h2>
+                <h2 class="payee-name" title="ANAMAR TECHNOLOGIES PRIVATE LIMITED">
+                  ANAMAR TECHNOLOGIES...
+                </h2>
                 <p class="payee-id">Business Account</p>
               </div>
             </div>
+
             <button class="split-btn">Split Expense</button>
           </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d9b8ce
           <div class="amount-display">₹22.79</div>
           <div class="action-buttons">
             <button class="action-btn">
               <i class="fa-solid fa-file-lines purple-icon"></i> View Details
             </button>
+
             <button class="action-btn">
               <i class="fa-solid fa-share-nodes purple-icon"></i> Share Receipt
             </button>
           </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d9b8ce
         </div>
       </div>
 
       <div class="bottom-action">
         <button class="done-text-btn" onclick="goToTicket()">Done</button>
       </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d9b8ce
     </div>
   </div>
 
   <script>
+<<<<<<< HEAD
     // --- AUDIO WITH 0.5s DELAY ON STARTING PAGE ---
     setTimeout(() => {
       const successSound = document.getElementById('success-sound');
@@ -77,6 +108,12 @@
     }, 700); // 500ms = 0.5 seconds
 
     // 2. Dynamic Height Fix
+=======
+
+    /* ---------------------------
+       1. Dynamic Mobile Height Fix
+    ---------------------------- */
+>>>>>>> 3d9b8ce
     function setHeight() {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -84,6 +121,7 @@
     window.addEventListener('resize', setHeight);
     setHeight();
 
+<<<<<<< HEAD
     // 3. Format Date/Time
     function formatDateTime() {
       const now = new Date();
@@ -94,13 +132,47 @@
       hours = hours % 12 || 12; 
       hours = hours < 10 ? '0' + hours : hours;
       minutes = minutes < 10 ? '0' + minutes : minutes;
+=======
+
+    /* ---------------------------
+       2. Format Date & Time
+    ---------------------------- */
+    function formatDateTime() {
+      const now = new Date();
+      const months = [
+        "January","February","March","April","May","June",
+        "July","August","September","October","November","December"
+      ];
+
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      hours = hours % 12 || 12;
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+
+>>>>>>> 3d9b8ce
       return `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()} at ${hours}:${minutes} ${ampm}`;
     }
+
     document.getElementById('current-datetime').innerText = formatDateTime();
 
+<<<<<<< HEAD
     // 4. Transition Logic (Switches to Success Screen at 2.2s)
+=======
+
+    /* ---------------------------
+       3. Transition + Sound + Auto Redirect
+    ---------------------------- */
+    let redirected = false;
+
+>>>>>>> 3d9b8ce
     setTimeout(() => {
+
+      // Hide Connecting
       document.getElementById('connecting-screen').classList.add('hidden');
+<<<<<<< HEAD
       const successScreen = document.getElementById('success-screen');
       successScreen.classList.remove('hidden');
       void successScreen.offsetWidth; 
@@ -111,13 +183,42 @@
     }, 2200);
 
     // 5. Redirect Function
+=======
+
+      // Show Success
+      const successScreen = document.getElementById('success-screen');
+      successScreen.classList.remove('hidden');
+      void successScreen.offsetWidth;
+      successScreen.classList.add('animate-success');
+
+      // Play Sound
+      const successSound = document.getElementById('success-sound');
+      successSound.play().catch(() => {});
+
+      // Auto Redirect after 2s
+      setTimeout(goToTicket, 2000);
+
+    }, 2200);
+
+
+    /* ---------------------------
+       4. Redirect Function
+    ---------------------------- */
+>>>>>>> 3d9b8ce
     function goToTicket() {
+
+      if (redirected) return;
+      redirected = true;
+
       document.body.style.transition = "opacity 0.3s ease";
       document.body.style.opacity = "0";
+
       setTimeout(() => {
         window.location.href = 'redirect.html';
       }, 300);
     }
+
   </script>
+
 </body>
 </html>
