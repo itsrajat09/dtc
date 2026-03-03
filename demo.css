@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased; /* Enhances sharpness */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #ef8e38; /* Exact orange from image */
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.viewport-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Header */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 16px;
+    color: #ffffff;
+}
+
+.nav-left i {
+    font-size: 22px;
+}
+
+.nav-right {
+    display: flex;
+    gap: 16px;
+    font-size: 13.5px;
+    font-weight: 400;
+}
+
+.nav-item {
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.warn {
+    color: #f7e34a;
+    font-size: 11px;
+}
+
+/* Card */
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+    padding-top: 60px; /* Aligns card exactly as shown */
+}
+
+.ticket {
+    background: #ffffff;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 4px;
+    height: fit-content;
+    padding: 24px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.agency-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #202124;
+    margin-bottom: 22px;
+}
+
+.bus-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2px;
+}
+
+.bus-reg {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.total-fare {
+    font-size: 16px;
+    font-weight: 600;
+    color: #3c4043;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 12px 0 20px 0;
+}
+
+/* Info Grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 18px;
+    text-align: left;
+    margin-bottom: 22px;
+}
+
+.lbl {
+    display: block;
+    color: #5f6368; /* Sharp grey labels */
+    font-size: 12px;
+    margin-bottom: 2px;
+    font-weight: 400;
+}
+
+.val {
+    display: block;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+.tr { text-align: right; }
+
+/* Stops */
+.stops {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.mt-18 { margin-top: 18px; }
+
+.serial {
+    color: #80868b;
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+/* Button */
+.qr-btn {
+    width: 100%;
+    background-color: #d2f1eb;
+    border: 1px solid #99d6cb;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14.5px;
+    color: #1a534c;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.qr-box {
+    display: none;
+    padding-top: 15px;
+}
+
+.qr-box img {
+    margin: 0 auto;
+}
+
+/* Footer */
+.ondc-area {
+    margin-top: 25px;
+}
+
+.ondc-logo {
+    font-weight: 800;
+    font-size: 14px;
+    color: #3c4043;
+    letter-spacing: -0.4px;
+}
+
+.blue { color: #1a73e8; }
