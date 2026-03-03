@@ -9,6 +9,8 @@
 </head>
 <body>
 
+  <audio id="success-sound" src="phonepay.mp3" preload="auto"></audio>
+
   <div class="app-container">
     
     <div id="connecting-screen" class="screen-view">
@@ -21,7 +23,6 @@
     </div>
 
     <div id="success-screen" class="screen-view hidden">
-      
       <div class="success-header">
         <div class="check-circle">
           <svg viewBox="0 0 24 24" class="check-svg">
@@ -34,7 +35,6 @@
 
       <div class="receipt-card-container">
         <div class="receipt-card">
-          
           <div class="receipt-top-row">
             <div class="profile-info">
               <div class="avatar">
@@ -47,9 +47,7 @@
             </div>
             <button class="split-btn">Split Expense</button>
           </div>
-          
           <div class="amount-display">₹22.79</div>
-
           <div class="action-buttons">
             <button class="action-btn">
               <i class="fa-solid fa-file-lines purple-icon"></i> View Details
@@ -58,7 +56,6 @@
               <i class="fa-solid fa-share-nodes purple-icon"></i> Share Receipt
             </button>
           </div>
-          
         </div>
       </div>
 
@@ -66,11 +63,20 @@
         <button class="done-text-btn" onclick="goToTicket()">Done</button>
       </div>
     </div>
-
   </div>
 
   <script>
-    // 1. Dynamic Height Fix for Mobile
+    // --- AUDIO WITH 0.5s DELAY ON STARTING PAGE ---
+    setTimeout(() => {
+      const successSound = document.getElementById('success-sound');
+      if (successSound) {
+        successSound.play().catch(error => {
+          console.log("Autoplay blocked. Sound will trigger after user interaction.");
+        });
+      }
+    }, 700); // 500ms = 0.5 seconds
+
+    // 2. Dynamic Height Fix
     function setHeight() {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -78,38 +84,33 @@
     window.addEventListener('resize', setHeight);
     setHeight();
 
-    // 2. Format exact date & time like the video
+    // 3. Format Date/Time
     function formatDateTime() {
       const now = new Date();
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      
       let hours = now.getHours();
       let minutes = now.getMinutes();
       const ampm = hours >= 12 ? 'PM' : 'AM';
-      
       hours = hours % 12 || 12; 
       hours = hours < 10 ? '0' + hours : hours;
       minutes = minutes < 10 ? '0' + minutes : minutes;
-      
       return `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()} at ${hours}:${minutes} ${ampm}`;
     }
     document.getElementById('current-datetime').innerText = formatDateTime();
 
-    // 3. Exact Animation Timing Logic
+    // 4. Transition Logic (Switches to Success Screen at 2.2s)
     setTimeout(() => {
       document.getElementById('connecting-screen').classList.add('hidden');
-      
       const successScreen = document.getElementById('success-screen');
       successScreen.classList.remove('hidden');
-      
       void successScreen.offsetWidth; 
       successScreen.classList.add('animate-success');
       
-      // Auto-Redirect seamlessly after 3.5 seconds
+      // Auto-Redirect
       setTimeout(goToTicket, 2000); 
     }, 2200);
 
-    // 4. Redirect Function
+    // 5. Redirect Function
     function goToTicket() {
       document.body.style.transition = "opacity 0.3s ease";
       document.body.style.opacity = "0";
