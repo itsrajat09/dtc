@@ -42,7 +42,7 @@ body {
     font-weight: 900;
     font-size: 14px;
     z-index: 10;
-    padding-bottom: 70px;
+    padding-bottom: 60px;
     padding-top: 10px;
 }
 
@@ -108,8 +108,9 @@ body {
 
 .label { 
     font-size: 13px; 
-    color: #5F6368; 
+    color: #000000; 
     margin-bottom: 4px; 
+    font-weight: 400;
 }
 
 .value { 
@@ -131,8 +132,9 @@ body {
 .ticket-id {
     text-align: center;
     font-size: 14px;
-    color: #70757A;
+    color: #000000;
     margin: -5px 0 15px 0;
+    font-weight:400;
 }
 
 /* QR BUTTON */
@@ -158,30 +160,32 @@ body {
 
 
 
-.qr-button svg {
-    width: 22px;
-    height: 22px;
-}
 
 /* QR DISPLAY SCREEN */
-.qr-display-container {
-    background: #ffffff;
-    padding: 12px;
-    
-    border-radius: 10px;
-    width: 300px;
-    height: 300px;
-    margin: 70px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    .qr-display-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:57vh;
 }
 
-.qr-display-container img {
-    width: 100%;
-    height: 100%;
-    image-rendering: pixelated;
+.qr-card{
+    width:400px;
+    height:400px;
+    background:white;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+}
+
+.qr-card img{
+    width:85%;
+    height:85%;
+     display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 /* FOOTER */
@@ -189,7 +193,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 70px;
+    padding-left: 26%;
     text-align: center;
     font-weight: 550;
     font-size: 20px;
@@ -284,5 +288,12 @@ body {
 }
 .network{
     font-size: 18px;
-    color:#4b4e51;
+    color:#424447;
+}
+
+/* Inside style11.css */
+.qr-button svg {
+    width: 29px;   /* Decrease this number to make it smaller */
+    height: 29px;  /* Keep width and height same for a square icon */
+    color: #2E7D32;
 }
