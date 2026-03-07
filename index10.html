@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Payment Successful</title>
 
+  <!-- FIXED Font Awesome Link (you had small typo earlier) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style10.css">
 </head>
@@ -81,7 +82,20 @@
   <script>
 
     /* ---------------------------
-       1. Dynamic Mobile Height Fix
+       1. PLAY SOUND INSTANTLY
+    ---------------------------- */
+    window.addEventListener("DOMContentLoaded", () => {
+      const successSound = document.getElementById("success-sound");
+
+      // Small delay improves autoplay compatibility
+      setTimeout(() => {
+        successSound.play().catch(() => {});
+      }, 700);
+    });
+
+
+    /* ---------------------------
+       2. Dynamic Mobile Height Fix
     ---------------------------- */
     function setHeight() {
       let vh = window.innerHeight * 0.01;
@@ -92,7 +106,7 @@
 
 
     /* ---------------------------
-       2. Format Date & Time
+       3. Format Date & Time
     ---------------------------- */
     function formatDateTime() {
       const now = new Date();
@@ -116,33 +130,29 @@
 
 
     /* ---------------------------
-       3. Transition + Sound + Auto Redirect
+       4. Transition + Auto Redirect
     ---------------------------- */
     let redirected = false;
 
     setTimeout(() => {
 
-      // Hide Connecting
+      // Hide Connecting Screen
       document.getElementById('connecting-screen').classList.add('hidden');
 
-      // Show Success
+      // Show Success Screen
       const successScreen = document.getElementById('success-screen');
       successScreen.classList.remove('hidden');
       void successScreen.offsetWidth;
       successScreen.classList.add('animate-success');
 
-      // Play Sound
-      const successSound = document.getElementById('success-sound');
-      successSound.play().catch(() => {});
-
-      // Auto Redirect after 2s
+      // Auto Redirect after 2 seconds
       setTimeout(goToTicket, 2000);
 
     }, 2200);
 
 
     /* ---------------------------
-       4. Redirect Function
+       5. Redirect Function
     ---------------------------- */
     function goToTicket() {
 

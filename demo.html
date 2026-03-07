@@ -1,285 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delhi Transport E-Ticket Replica</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delhi Transport E-Ticket</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        body {
-            background-color: #E47D3A;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vdh;
-            padding: 0px 15px 15px 15px;
-            overflow: hidden;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
 
-        .screen-container {
-            width: 100%;
-            max-width: 400px;
-            height: 90vdh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
+body {
+    background-color: #ef8e38;
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
 
-        /* Top Nav - Persistent */
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.9);
-            padding: 10px ;
-            font-size: 14px;
-            z-index: 10;
-        }
-
-        .issue-link {
-            display: flex;
-            align-items: center;
-            gap:6px;
-        }
-
-        .warning-icon {
-            width: 22px;
-            height: 22px;
-            background-color: #FDE047;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            padding-bottom: 1px;
-            color: black;
-            font-weight: 900;
-            font-size: 11px;
-            border: 1px solid #000;
-        }
-
-        /* Views */
-        .view {
-            display: none;
-            width: 100%;
-            flex-direction: column;
-            margin-top: 40px;
-        }
-
-        .view.active {
-            display: flex;
-        }
-
-        /* Ticket Card Styles */
-        .ticket-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 24px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .dept-title {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 20px;
-        }
-
-        .top-details {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            color: #3C4043;
-            margin-bottom: 8px;
-        }
-
-        .divider {
-            height: 1.5px;
-            background-color: #5F6368;
-            margin: 10px 0 15px 0;
-        }
-
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-
-        .label { font-size: 13px; color: #5F6368; margin-bottom: 4px; }
-        .value { font-size: 16px; color: #202124; font-weight: 400; }
-        .text-right { text-align: right; }
-
-        .ticket-id {
-            text-align: center;
-            font-size: 12px;
-            color: #70757A;
-            margin: 20px 0 15px 0;
-        }
-
-        /* QR BUTTON — Pixel Accurate */
-
-.qr-button {
-    width: 100%;
-    background: linear-gradient(180deg, #BFE9E4 0%, #9FD8D1 100%);                 /* Softer mint green */
-    border: 1.5px solid #5F9F98;         /* Slightly darker thin border */
-    padding: 16px 0;                     /* More vertical padding */
-    border-radius: 14px;                 /* More rounded like image */
+/* Layout */
+.viewport-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
-    font-size: 16px;                     /* Slightly smaller */
-    font-weight: 500;
-    color: #083B34;                      /* Darker teal text */
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-.qr-button:hover {
-    background: linear-gradient(180deg, #C9F1EC 0%, #A6E0D9 100%);
-}
-
-/* Button Press Effect */
-.qr-button:active {
-    transform: scale(0.98);
-}
-
-/* QR Icon — Better Proportion */
-.qr-button svg {
-    width: 22px;
-    height: 22px;
-}
-
-
-/* QR DISPLAY SCREEN */
-
-.qr-display-container {
-    background: #ffffff;
-    padding: 12px;
-    border-radius: 10px;                 /* Slightly rounded like mobile */
-    width: 300px;
-    height: 300px;
-    margin: 70px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-}
-
-.qr-display-container img {
-    width: 100%;
+    flex-direction: column;
     height: 100%;
-    image-rendering: pixelated;
 }
 
+/* Header */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 16px;
+    color: #ffffff;
+}
 
-/* FOOTER (ONDC NETWORK) */
+.nav-right {
+    display: flex;
+    gap: 16px;
+    font-size: 13.5px;
+}
 
-.footer {
-    margin-top: 30px;                    /* More spacing below button */
+.nav-item {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 60px 16px 0;
+}
+
+.ticket {
+    background: #ffffff;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 4px;
+    padding: 24px 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     text-align: center;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 0.8px;
-    color: #1F1F1F;
 }
 
-.ondc-text {
-    color: #1A73E8;                       /* Proper ONDC blue */
-    margin-right: 4px;
+.agency-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 22px;
 }
-    </style>
+
+.bus-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bus-reg {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.total-fare {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 12px 0 20px;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 18px;
+    text-align: left;
+    margin-bottom: 22px;
+}
+
+.lbl {
+    font-size: 12px;
+    color: #5f6368;
+}
+
+.val {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.tr { text-align: right; }
+
+/* Stops */
+.stops {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.serial {
+    color: #80868b;
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+/* QR Button */
+.qr-btn {
+    width: 100%;
+    background-color: #d2f1eb;
+    border: 1px solid #99d6cb;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* QR Screen */
+.qr-screen {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.qr-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Footer */
+.ondc-area {
+    margin-top: 25px;
+}
+
+.blue { color: #1a73e8; }
+</style>
 </head>
+
 <body>
 
-    <div class="screen-container">
-        <div class="top-nav">
-            <div style="cursor: pointer; font-size: 22px;" onclick="location.reload()">✕</div>
-            <div class="issue-link">
-                <div class="warning-icon">!</div>
-                Issue with ticket?
-            </div>
-            <div style="cursor: pointer;">View all tickets</div>
-        </div>
+<div class="viewport-wrapper">
 
-        <div id="ticketView" class="view active">
-            <div class="ticket-card">
-                <div class="dept-title">Transport Dept. of Delhi</div>
-                
-                <div class="top-details">
-                    <span>DL1PD4722</span>
-                    <span>₹4.62</span>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="data-row">
-                    <div>
-                        <div class="label">Bus Route</div>
-                        <div class="value">254A</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="label">Fare</div>
-                        <div class="value">₹5.0</div>
-                    </div>
-                </div>
-
-                <div class="data-row">
-                    <div>
-                        <div class="label">Booking Time</div>
-                        <div class="value">23 Feb, 26 | 11:08 AM</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="label">Tickets</div>
-                        <div class="value">1</div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom:15px">
-                    <div class="label">Starting stop</div>
-                    <div class="value">Peera Garhi Metro Station</div>
-                </div>
-
-                <div style="margin-bottom:15px">
-                    <div class="label">Ending stop</div>
-                    <div class="value">Peeragarhi Chowk Flyover</div>
-                </div>
-
-                <div class="ticket-id">T23022026bdfcd4d8ac</div>
-
-                <button class="qr-button" onclick="showQR()">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 0h2v2h-2v-2zm3 3h3v2h-3v-2zm-3 3h2v2h-2v-2zm3 0h3v2h-3v-2zm0-3h-3v-3h3v3z" />
-                    </svg>
-                    Show QR code
-                </button>
-
-                <div class="footer">
-                    <span class="ondc-text">ONDC</span> NETWORK
-                </div>
-            </div>
-        </div>
-
-        <div id="qrView" class="view">
-            <div class="qr-display-container">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=DELHI-TRANS-T23022026bdfcd4d8ac-SECURE-DYNAMIC-V3-ECC-HIGH&ecc=H" alt="Ticket QR">
-            </div>
+    <div class="top-nav">
+        <div onclick="location.reload()">✕</div>
+        <div class="nav-right">
+            <div class="nav-item" onclick="openEdit()">Support</div>
         </div>
     </div>
 
-    <script>
-        function showQR() {
-            document.getElementById('ticketView').classList.remove('active');
-            document.getElementById('qrView').classList.add('active');
-        }
-    </script>
+    <!-- TICKET VIEW -->
+    <div class="content" id="ticketView">
+        <div class="ticket">
+
+            <div class="agency-title">Transport Dept. of Delhi</div>
+
+            <div class="bus-row">
+                <div id="ticketCode" class="bus-reg">DL1PD4722</div>
+                <div id="fare" class="total-fare">₹4.62</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="grid">
+                <div>
+                    <span class="lbl">Bus route</span>
+                    <span id="busRoute" class="val">254A</span>
+                </div>
+                <div class="tr">
+                    <span class="lbl">Fare</span>
+                    <span id="fare2" class="val">₹5.0</span>
+                </div>
+
+                <div>
+                    <span class="lbl">Booking time</span>
+                    <span id="bookingTime" class="val"></span>
+                </div>
+                <div class="tr">
+                    <span class="lbl">Tickets</span>
+                    <span class="val">1</span>
+                </div>
+            </div>
+
+            <div class="stops">
+                <div class="lbl">Starting stop</div>
+                <div id="startStop" class="val">Peera Garhi Metro Station</div>
+
+                <div class="lbl" style="margin-top:18px;">Ending stop</div>
+                <div id="endStop" class="val">Peeragarhi Chowk Flyover</div>
+            </div>
+
+            <div id="ticketId" class="serial">T23022026bdfcd4d8ac</div>
+
+            <button class="qr-btn" onclick="showQR()">Show QR Code</button>
+
+            <div class="ondc-area">
+                <span class="blue">ONDC</span> NETWORK
+            </div>
+
+        </div>
+    </div>
+
+    <!-- QR VIEW -->
+    <div class="qr-screen" id="qrView">
+        <div class="qr-box">
+            <div id="qrcode"></div>
+            <button class="qr-btn" style="margin-top:15px;" onclick="closeQR()">Back</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+<script>
+
+/* Dynamic Booking Time */
+function formatDateTime() {
+    const now = new Date();
+    const options = { day:'2-digit', month:'short', year:'2-digit' };
+    const date = now.toLocaleDateString('en-US', options);
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2,'0');
+    const ampm = hours >= 12 ? 'PM':'AM';
+    hours = hours % 12 || 12;
+    return `${date} | ${hours}:${minutes} ${ampm}`;
+}
+bookingTime.textContent = formatDateTime();
+
+
+/* QR Logic */
+function showQR() {
+    ticketView.style.display = "none";
+    qrView.style.display = "flex";
+    qrcode.innerHTML = "";
+    new QRCode(qrcode, {
+        text: ticketId.textContent.trim(),
+        width: 200,
+        height: 200
+    });
+}
+
+function closeQR() {
+    qrView.style.display = "none";
+    ticketView.style.display = "flex";
+}
+
+
+/* Edit Logic */
+function openEdit() {
+    const newStart = prompt("Edit Starting Stop", startStop.textContent);
+    if(newStart !== null) startStop.textContent = newStart;
+
+    const newEnd = prompt("Edit Ending Stop", endStop.textContent);
+    if(newEnd !== null) endStop.textContent = newEnd;
+}
+
+</script>
+
 </body>
 </html>
