@@ -256,15 +256,13 @@ body {
     gap: 15px;
     background: transparent; 
 }
-.bank-logo-container {
-    width: 38px;
-    height: 38px;
-    background: var(--sbi-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.bank-logo-container{
+width:48px;
+height:48px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 .sbi-img-logo {
     width: 65%;
