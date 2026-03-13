@@ -95,11 +95,11 @@ body {
     display: block;
 }
 
-/* --- Search Container --- */
+/* --- Search Container (UPDATED) --- */
 .search-container {
     margin: -40px 15px 20px 15px; /* Negative margin to overlap header */
     background: white;
-    border-radius: 20px;
+    border-radius: 24px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     position: relative;
     z-index: 20;
@@ -123,7 +123,11 @@ body {
     outline: none;
     font-size: 16px;
     flex-grow: 1;
-    color: #555;
+    color: #222;
+}
+
+.search-box input::placeholder {
+    color: #888;
 }
 
 .search-icon {
@@ -143,9 +147,13 @@ body {
 }
 
 .loc-icon-wrapper {
-    width: 24px;
+    width: 30px;
+    height: 30px;
+    background-color: #F0F2F5; /* Light grey circle background */
+    border-radius: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-right: 15px;
 }
 
@@ -162,14 +170,14 @@ body {
 }
 
 .arrow-icon {
-    color: #264E86;
-    font-size: 12px;
+    color: #1976D2; /* Match the bright blue arrow from screenshot */
+    font-size: 14px;
 }
 
 .divider {
     height: 1px;
     background-color: #f0f0f0;
-    margin-left: 50px; /* Indent divider */
+    margin-left: 65px; /* Indent divider past the icon */
     margin-right: 20px;
 }
 
@@ -224,43 +232,44 @@ body {
     z-index: 2;
 }
 
-/* Specific Card Styles */
+/* Specific Card Styles (UPDATED BUS IMG SIZE) */
 .bus-card {
-    min-height: 230px; /* Taller card */
+    min-height: 210px; /* Taller card */
 }
 
 .discount-badge {
     display: inline-block;
     background-color: #E3F2FD;
-    color: #1976D2;
-    font-size: 11px;
+    color: #1e63a8;
+    font-size: 14px;
     font-weight: 700;
-    padding: 4px 8px;
+    padding: 7px 8px;
     border-radius: 12px;
     margin-top: 5px;
     width: fit-content;
+    margin-bottom:81px;
 }
 
 .bus-img {
     position: absolute;
-    bottom: 10px;
-    right: -10px;
-    width: 120px;
+    bottom: 5px;
+    right: -24px;
+    width: 170px; /* Increased size to match the screenshot */
 }
 
 .metro-card {
-    min-height: 110px;
+    min-height: 98px;
 }
 
 .metro-img {
     position: absolute;
-    bottom: 10px;
-    right: -10px;
+    bottom: 3px;
+    right: -20px;
     width: 120px;
 }
 
 .pass-card {
-    min-height: 100px;
+    min-height: 98px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -291,21 +300,23 @@ body {
 
 .card-icon-img {
     position: absolute;
-    bottom: 10px;
+    bottom: 30px;
     right: 10px;
-    width: 50px;
+    width: 70px;
     border-radius: 8px;
 }
 
 .services-card {
-    min-height: 100px;
+    max-height: 90px;
 }
 
 .auto-img {
+   
+    width: 130px;
     position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 70px;
+    left:60px;
+    bottom:1px;
+    top:2px;
 }
 
 /* --- Around You Section (Map & List) --- */
@@ -475,7 +486,7 @@ body {
     margin-bottom: 35px;
 }
 
-/* --- NEW: Footer Message Section --- */
+/* --- Footer Message Section --- */
 .footer-message {
     padding: 30px 20px 60px 20px; /* Padding bottom for scrolling space */
     background-color: #fff;
@@ -507,37 +518,59 @@ body {
 .bottom-nav {
     position: fixed;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
-    background: white;
+    max-width: 480px; /* To match mobile app feel */
+    height: 75px;
+    background: #ffffff;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0 15px 0;
-    border-top: 1px solid #eee;
-    z-index: 100;
+    align-items: center;
+    border-top: 1.5px solid #efefef;
+    z-index: 1000;
+    padding-bottom: 5px;
 }
 
 .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #757575;
-    font-size: 10px;
-    gap: 5px;
-    cursor: pointer;
+    text-decoration: none;
+    flex: 1;
+    color: #666; /* Inactive color */
+    transition: color 0.2s ease;
 }
 
-.nav-item i {
-    font-size: 20px;
-    margin-bottom: 2px;
+/* Icon Setup */
+.nav-item svg {
+    margin-bottom: 4px;
+    transition: stroke 0.2s ease;
 }
 
+/* Label Setup */
+.nav-item span {
+    font-size: 11px;
+    font-weight: 700; /* Matching the bold text in the image */
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ACTIVE STATE - Pure Black */
 .nav-item.active {
-    color: #222;
+    color: #000;
 }
 
-.nav-item.active i {
-    color: #222;
+.nav-item.active svg {
+    stroke: #000; /* Only the outline is colored black */
+}
+
+/* Custom container for the Ticket & Pass icon to keep it balanced */
+.custom-ticket-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
 }
 
 /* Responsive adjust */
