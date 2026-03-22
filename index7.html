@@ -80,9 +80,9 @@
 
     <script>
         function goBack() {
-            // Optional: Slide out to the right when going back
+        
             const appContainer = document.querySelector('.app-container');
-            // Reusing slide-out-left for consistency, but you can create a slide-out-right in CSS if preferred
+         
             appContainer.classList.add('slide-out-left'); 
             
             setTimeout(() => {
@@ -91,17 +91,16 @@
         }
 
         function buyPass(amount, element) {
-            // Visual feedback on tap
+   
             element.style.opacity = "0.6";
 
-            // Save fare to local storage for the payment page
+        
             localStorage.setItem('chartr_fare', amount);
-            
-            // 1. Trigger Slide Out Animation
+      
             const appContainer = document.querySelector('.app-container');
             appContainer.classList.add('slide-out-left');
             
-            // 2. Wait for animation to finish (300ms) before changing URL
+        
             setTimeout(() => {
                 window.location.href = 'index4.html';
             }, 300);
