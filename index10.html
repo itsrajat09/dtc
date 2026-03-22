@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Payment Successful</title>
 
-  <!-- FIXED Font Awesome Link (you had small typo earlier) -->
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style10.css">
 </head>
 
 <body>
 
-  <!-- Success Sound -->
+
   <audio id="success-sound" src="phonepay.mp3" preload="auto"></audio>
 
   <div class="app-container">
 
-    <!-- CONNECTING SCREEN -->
+   
     <div id="connecting-screen" class="screen-view">
       <div class="loader-container">
         <div class="loader-track">
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <!-- SUCCESS SCREEN -->
+    
     <div id="success-screen" class="screen-view hidden">
       <div class="success-header">
         <div class="check-circle">
@@ -81,9 +81,7 @@
 
   <script>
 
-    /* ---------------------------
-       1. PLAY SOUND INSTANTLY
-    ---------------------------- */
+  
     window.addEventListener("DOMContentLoaded", () => {
       const successSound = document.getElementById("success-sound");
 
@@ -94,9 +92,7 @@
     });
 
 
-    /* ---------------------------
-       2. Dynamic Mobile Height Fix
-    ---------------------------- */
+    
     function setHeight() {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -105,9 +101,7 @@
     setHeight();
 
 
-    /* ---------------------------
-       3. Format Date & Time
-    ---------------------------- */
+    
     function formatDateTime() {
       const now = new Date();
       const months = [
@@ -129,31 +123,27 @@
     document.getElementById('current-datetime').innerText = formatDateTime();
 
 
-    /* ---------------------------
-       4. Transition + Auto Redirect
-    ---------------------------- */
+  
     let redirected = false;
 
     setTimeout(() => {
 
-      // Hide Connecting Screen
+      
       document.getElementById('connecting-screen').classList.add('hidden');
 
-      // Show Success Screen
+
       const successScreen = document.getElementById('success-screen');
       successScreen.classList.remove('hidden');
       void successScreen.offsetWidth;
       successScreen.classList.add('animate-success');
 
-      // Auto Redirect after 2 seconds
+    
       setTimeout(goToTicket, 2000);
 
     }, 2200);
 
 
-    /* ---------------------------
-       5. Redirect Function
-    ---------------------------- */
+   
     function goToTicket() {
 
       if (redirected) return;
