@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style2.css">
     
     <style>
-        /* UPDATED: Prevent double-tap zooming on mobile */
+
         html, body {
             touch-action: manipulation;
         }
@@ -76,30 +76,29 @@
     </div>
 
     <script>
-        // --- 1. Bus Number Logic (Focus + Redirect) ---
+       
         const inputs = document.querySelectorAll('.square-input');
 
         inputs.forEach((input, index) => {
-            // Handle number entry
+          
             input.addEventListener('input', (e) => {
                 const value = e.target.value;
                 
-                // Ensure only numbers are typed
+               
                 if (!/^\d*$/.test(value)) {
                     e.target.value = '';
                     return;
                 }
 
-                // Move focus to next box
+                
                 if (value.length === 1 && index < inputs.length - 1) {
                     inputs[index + 1].focus();
                 }
 
-                // CHECK IF ALL FILLED
                 checkAndRedirect();
             });
 
-            // Handle Backspace (move back)
+            
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Backspace' && e.target.value === '') {
                     if (index > 0) {
@@ -110,18 +109,17 @@
         });
 
         function checkAndRedirect() {
-            // Check if every input box has exactly 1 character
+
             const allFilled = Array.from(inputs).every(input => input.value.length === 1);
             
             if (allFilled) {
-                // Remove focus from keyboard so it drops down smoothly
+              
                 document.activeElement.blur(); 
 
-                // 1. Trigger Slide Out Animation
                 const appContainer = document.querySelector('.app-container');
                 appContainer.classList.add('slide-out-left');
                 
-                // 2. Wait for animation to finish (300ms) before changing URL
+            
                 setTimeout(() => {
                     window.location.href = 'index3.html'; 
                 }, 300);
@@ -129,7 +127,7 @@
         }
 
 
-        // --- 2. Random Routes Logic ---
+ 
         const datalist = document.getElementById('route-options');
         const min = 306;
         const max = 721;
