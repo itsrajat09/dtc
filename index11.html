@@ -184,10 +184,9 @@ function hideQR(){
     document.getElementById("qrView").classList.remove("active");
     document.getElementById("ticketView").classList.add("active");
 }
-    // SYSTEM CLOCK LOGIC: Pulls current time and subtracts 20 mins
     function updateTicketTime() {
         const systemDate = new Date(); 
-        systemDate.setMinutes(systemDate.getMinutes() - 20); // Subtract 20 mins
+        systemDate.setMinutes(systemDate.getMinutes() - 20); 
 
         const day = systemDate.getDate().toString().padStart(2, '0');
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
