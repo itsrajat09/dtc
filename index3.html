@@ -134,7 +134,7 @@
         const priceNonAC = 13.50;
         let currentTotal = 22.79;
 
-        // --- Data Sources ---
+
         const stations = [
             "ISBT / Kashmiri Gate", "Hastsal Bridge LIG Flats", "Tees Hazari Court", "St Stephen Hospital", 
             "Ice Factory", "Azad Market", "Bara Hindu Rao", "Model Basti", "Guru Gobind Singh Marg / Faiz Road", 
@@ -156,7 +156,6 @@
             if(rnd !== 721) buses.push(rnd.toString());
         }
 
-        // --- Live Time ---
         function updateDateTime() {
             const now = new Date();
             const day = now.getDate();
@@ -169,7 +168,7 @@
             document.getElementById('live-time').innerText = `${day} ${month}, ${year} | ${hours}:${minutes} ${ampm}`;
         }
 
-        // --- Custom Dropdown Logic ---
+       
         function populateList(type, items) {
             const listEl = document.getElementById(`list-${type}`);
             listEl.innerHTML = '';
@@ -179,7 +178,7 @@
                 div.innerText = item;
                 
                 div.onclick = function(e) {
-                    e.stopPropagation(); // Stop click from propagating
+                    e.stopPropagation();
                     document.getElementById(`input-${type}`).value = item;
                     saveCustomEdit(type, item);
                 };
@@ -196,8 +195,7 @@
 
         function toggleEdit(event, type) {
             event.stopPropagation();
-            
-            // Close any currently open inputs before opening the new one
+  
             closeAllEdits();
 
             const display = document.getElementById(`disp-${type}`);
@@ -240,12 +238,11 @@
             });
         }
 
-        // Close dropdowns if user clicks outside
+
         document.addEventListener('click', function() {
             closeAllEdits();
         });
 
-        // --- Fare Calculation & Navigation ---
         function calculateFare() {
             let basePrice = (currentType === 'AC') ? priceAC : priceNonAC;
             let total = basePrice * ticketCount;
@@ -284,7 +281,7 @@
             }, 300);
         }
 
-        // Initialization
+
         updateDateTime();
         calculateFare(); 
         setInterval(updateDateTime, 60000);
