@@ -110,10 +110,10 @@
     </div>
 
     <script>
-        // Set dynamic pricing if coming from checkout
+        
         window.onload = function() {
             let storedFare = localStorage.getItem('chartr_fare');
-            // Check if there is a fare stored, otherwise default to 13.75
+  
             if (storedFare && storedFare !== "0.0") {
                 updateAllAmounts(storedFare);
             }
@@ -126,32 +126,31 @@
             document.getElementById('final-pay-btn').innerText = "Pay ₹" + amount;
         }
 
-        // --- Handle Overlay Tap ---
+
         function closeSheet() {
             const overlay = document.getElementById('backdrop');
             const sheet = document.getElementById('bottomSheet');
             
-            // This adds the 'hidden' class, dropping the overlay opacity to 0
-            // and sliding the sheet out of view.
+        
             overlay.classList.add('hidden');
             sheet.classList.add('hidden');
         }
 
-        // --- Handle Final Pay Button ---
+
         function submitPay() {
             const payBtn = document.getElementById('final-pay-btn');
             const appContainer = document.querySelector('.app-container');
             
-            // Show processing state
+
             payBtn.style.opacity = "0.7";
             payBtn.style.pointerEvents = "none";
             payBtn.innerText = "Processing...";
             
-            // Slide screen away to final success page
+       
             setTimeout(() => {
                 appContainer.classList.add('slide-out-left');
                 setTimeout(() => {
-                    // Redirects to your final success page 
+                
                     window.location.href = "index9.html"; 
                 }, 250);
             }, 300);
