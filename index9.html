@@ -132,17 +132,17 @@
       const payBtn = document.getElementById('pay-btn');
       const appContainer = document.querySelector('.app-container');
       
-      // 1. Disable the button to prevent double clicks
+      
       payBtn.style.opacity = "0.7";
       payBtn.style.pointerEvents = "none";
       
-      // 2. Wait for 1.5 seconds (simulating bank processing)
+
       setTimeout(() => {
         
-        // 3. Trigger Slide Out Animation
+
         appContainer.classList.add('slide-out-left');
         
-        // 4. Wait for animation to finish (300ms), then go to success page
+
         setTimeout(() => {
           window.location.href = "index10.html";
         }, 300);
