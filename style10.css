@@ -46,9 +46,6 @@ body {
   display: none !important; 
 }
 
-/* =========================================
-   PHASE 1: CONNECTING SCREEN
-   ========================================= */
 #connecting-screen {
   background-color: var(--bg-dark);
   justify-content: center;
@@ -93,9 +90,6 @@ body {
   font-weight: 500; 
 }
 
-/* =========================================
-   PHASE 2: SUCCESS SCREEN HEADER
-   ========================================= */
 #success-screen {
   background-color: var(--success-green);
   z-index: 10;
@@ -168,16 +162,14 @@ body {
   to { opacity: 1; transform: translateY(0); } 
 }
 
-/* =========================================
-   RECEIPT CARD & SLIDE ANIMATION
-   ========================================= */
+
 .receipt-card-container {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  /* CHANGED: Swapped center for flex-start to push the card higher up */
+
   justify-content: flex-start; 
-  /* ADDED: A 25px gap between the header text and the card */
+
   padding-top: 25px; 
   padding-bottom: 10px;
 }
@@ -187,13 +179,13 @@ body {
   margin: 0 16px;
   border-radius: 20px;
   padding: 24px 20px;
-  /* Start completely off-screen at the bottom */
+
   transform: translateY(100vh);
   opacity: 0;
 }
 
 .animate-success .receipt-card {
-  /* Smooth decelerating slide-up */
+
   animation: slideUpCard 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
 }
 
@@ -202,7 +194,7 @@ body {
   100% { transform: translateY(0); opacity: 1; } 
 }
 
-/* Inside the Card Styling */
+
 .receipt-top-row {
   display: flex;
   justify-content: space-between;
@@ -290,11 +282,9 @@ body {
   font-size: 16px;
 }
 
-/* =========================================
-   BOTTOM "DONE" BUTTON
-   ========================================= */
+
 .bottom-action { 
-  /* Pushes the Done button to the absolute bottom of its container */
+
   margin-top: auto;
   padding: 15px 20px 25px; 
   text-align: center; 
