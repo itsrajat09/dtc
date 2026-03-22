@@ -103,7 +103,7 @@
     </div>
 
     <script>
-        // --- 1. Station Data ---
+      
         const stations = [
             "Aali Village", "Aadhaar India Gate", "Adarsh Nagar", "Agra Chowk New Palwal", "AIIMS", "Akshardham", 
             "Alapur", "Alawpur Chowk", "Anand Vihar", "Andrews Ganj", "Arjan Garh", "Arthala", "Ashok Park Main", 
@@ -135,7 +135,7 @@
             "New Ashok Nagar"
         ];
 
-        // Populate Lists
+     
         function populateList(listId, inputId, dropdownId) {
             const listEl = document.getElementById(listId);
             listEl.innerHTML = '';
@@ -147,7 +147,7 @@
                     document.getElementById(inputId).value = station;
                     document.getElementById(dropdownId).classList.add('hidden');
                     
-                    // Generate new random fare on station change
+            
                     pickRandomBaseFare(); 
                     
                     e.stopPropagation();
@@ -159,7 +159,7 @@
         populateList('source-list', 'source-input', 'source-dropdown');
         populateList('dest-list', 'dest-input', 'dest-dropdown');
 
-        // --- 2. Toggle Logic ---
+  
         function toggleDropdown(type) {
             const dropdown = document.getElementById(type + '-dropdown');
             const other = document.getElementById(type === 'source' ? 'dest-dropdown' : 'source-dropdown');
@@ -174,16 +174,21 @@
             }
         });
 
-        // --- 3. RANDOM FARE LOGIC ---
-        let baseFare = 43.0; // Default fallback
-        const possibleFares = [11, 21, 32, 43, 54, 64]; // Your specific list
+
+        let baseFare = 43.0;
+        const possibleFares = [11, 21, 32, 43, 54, 64];
 
         function pickRandomBaseFare() {
-            // Pick a random index from 0 to 5
+
+
+
+            
             const randomIndex = Math.floor(Math.random() * possibleFares.length);
             baseFare = possibleFares[randomIndex];
             
-            // Recalculate total immediately
+
+
+            
             updateFare();
         }
 
@@ -195,28 +200,32 @@
             document.getElementById('pay-btn').innerText = "Pay ₹" + total;
         }
 
-        // --- 4. NAVIGATION LOGIC WITH ANIMATION ---
+     
+
+
+        
         function goToPayment() {
-            // Give visual feedback on the button
+    
             const payBtn = document.getElementById('pay-btn');
             payBtn.style.opacity = "0.7";
             payBtn.style.pointerEvents = "none";
             
-            // Save fare to local storage for the payment page
+            
             const currentTotal = document.getElementById('display-fare').innerText.replace('₹', '');
             localStorage.setItem('chartr_fare', currentTotal);
             
-            // Trigger Slide Out Animation
+  
             const appContainer = document.querySelector('.app-container');
             appContainer.classList.add('slide-out-left');
             
-            // Wait for animation to finish (300ms) before changing URL
+     
             setTimeout(() => {
                 window.location.href = 'index4.html'; 
             }, 300);
         }
 
-        // Initialize with a random fare on page load
+
+        
         pickRandomBaseFare();
 
     </script>
