@@ -1,4 +1,4 @@
-/* --- Reset --- */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #F5F5F5; /* Light grey bg */
+    background-color: #F5F5F5; 
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -23,7 +23,7 @@ body {
     flex-direction: column;
 }
 
-/* --- Header --- */
+
 .header {
     background-color: #fff;
     padding: 18px 20px;
@@ -48,7 +48,7 @@ body {
     color: #222;
 }
 
-/* --- Content --- */
+
 .content-area {
     padding: 20px;
 }
@@ -64,9 +64,9 @@ body {
     margin-top: 25px;
 }
 
-/* Active Pass Card */
+
 .active-pass-card {
-    background-color: #E3F2FD; /* Light Blue Bg */
+    background-color: #E3F2FD; 
     border-radius: 12px;
     padding: 20px 15px;
     border: 1px solid #BBDEFB;
@@ -75,7 +75,7 @@ body {
 .active-title {
     font-size: 16px;
     font-weight: 700;
-    color: #0D47A1; /* Dark Blue Text */
+    color: #0D47A1; 
     margin-bottom: 5px;
 }
 
@@ -84,7 +84,6 @@ body {
     color: #546E7A;
 }
 
-/* Pass List Cards */
 .pass-card {
     background: white;
     border: 1px solid #E0E0E0;
@@ -102,12 +101,12 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Icon Box (D or M) */
+
 .icon-box {
     width: 50px;
     height: 50px;
-    background-color: #B2EBF2; /* Cyan/Teal Light */
-    color: #006064; /* Dark Cyan Text */
+    background-color: #B2EBF2; 
+    color: #006064; 
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -147,25 +146,25 @@ body {
 }
 
 .badge {
-    background-color: #E8F5E9; /* Light Green */
-    color: #2E7D32; /* Dark Green Text */
+    background-color: #E8F5E9;
+    color: #2E7D32; 
     font-size: 11px;
     font-weight: 500;
     padding: 4px 10px;
     border-radius: 12px;
 }
 
-/* Triggers when the page first loads */
+
 .page-enter {
     animation: slideInRight 0.35s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Triggers when JavaScript adds this class on button click */
+
 .slide-out-left {
     animation: slideOutLeft 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
 }
 
-/* The actual movement definitions */
+
 @keyframes slideInRight {
     from { transform: translateX(100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
