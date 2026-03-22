@@ -1,16 +1,16 @@
-/* ----- 1. GLOBAL RESET & CORE THEME ----- */
+
 :root {
     --bg-base: #060606;
     --bg-card: #0f0f0f; 
     --bg-sheet: #1c1c1c;
-    --bg-overlay: rgba(0, 0, 0, 0.5); /* Much lighter dimming, no blur */
+    --bg-overlay: rgba(0, 0, 0, 0.5);
     
     --text-white: #ffffff;
     --text-gray-light: #e0e0e0;
     --text-gray-mid: #a3a3a3;
     --text-gray-dark: #777777;
     
-    --brand-purple: #9f54f1; /* Exact PhonePe Purple */
+    --brand-purple: #9f54f1; 
     --brand-purple-hover: #8f48db;
     --success-green: #18b851; 
     --sbi-blue: #0f62c9;
@@ -43,7 +43,7 @@ body {
     overflow: hidden;
 }
 
-/* ----- 2. BACKGROUND CONTENT ----- */
+
 .background-content {
     width: 100%;
     height: 100%;
@@ -51,7 +51,6 @@ body {
     flex-direction: column;
 }
 
-/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -81,7 +80,6 @@ body {
     cursor: pointer;
 }
 
-/* Main Content */
 .main-content {
     flex: 1;
     padding: 10px 20px;
@@ -90,7 +88,7 @@ body {
     gap: 12px;
 }
 
-/* Payee Profile */
+
 .payee-profile {
     display: flex;
     align-items: center;
@@ -129,7 +127,6 @@ body {
     color: #555555;
 }
 
-/* Input Boxes */
 .info-box {
     background: var(--bg-card);
     border-radius: 8px;
@@ -167,7 +164,7 @@ body {
     padding-right: 20px;
 }
 
-/* ----- 3. DARKENED OVERLAY ----- */
+
 .overlay {
     position: absolute;
     top: 0;
@@ -177,14 +174,13 @@ body {
     background: var(--bg-overlay);
     z-index: 50;
     opacity: 1;
-    transition: opacity 0.3s ease; /* Smoothly fades out when tapped */
+    transition: opacity 0.3s ease;
 }
 .overlay.hidden {
-    opacity: 0; /* Opacity becomes normal (completely transparent) */
+    opacity: 0; 
     pointer-events: none;
 }
 
-/* ----- 4. BOTTOM SHEET (MODAL) ----- */
 .bottom-sheet {
     position: absolute;
     bottom: 0;
@@ -200,7 +196,7 @@ body {
     box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
 }
 .bottom-sheet.hidden {
-    transform: translateY(100%); /* Slides down out of view */
+    transform: translateY(100%); 
 }
 
 .sheet-header {
@@ -249,7 +245,7 @@ body {
     font-size: 25px;
     opacity: 80%;
 }
-/* Recommended Bank Row */
+
 .payment-method-row {
     display: flex;
     align-items: center;
@@ -315,7 +311,6 @@ justify-content:center;
     font-size: 20px;
 }
 
-/* Add Payment Methods Row */
 .action-row {
     display: flex;
     align-items: center;
@@ -338,8 +333,6 @@ justify-content:center;
     font-size: 14px;
     color: var(--text-white);
 }
-
-/* Footer Button */
 .pay-footer {
     padding: 10px 20px;
     margin-top: 10px;
