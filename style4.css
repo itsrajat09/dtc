@@ -1,4 +1,4 @@
-/* --- Reset & Base Styles --- */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #F5F7FA; /* Light grey background used in payment screens */
+    background-color: #F5F7FA; 
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -21,7 +21,7 @@ body {
     min-height: 100vh;
 }
 
-/* --- Header --- */
+
 .header {
     background-color: #fff;
     padding: 18px 20px;
@@ -46,12 +46,12 @@ body {
     color: #222;
 }
 
-/* --- Main Content Area --- */
+
 .payment-content {
     padding: 20px;
 }
 
-/* --- Section Labels --- */
+
 .section-label {
     font-size: 14px;
     color: #757575;
@@ -59,24 +59,23 @@ body {
     margin-bottom: 10px;
     margin-top: 25px;
 }
-/* First label needs less top margin */
 .section-label:first-child {
     margin-top: 5px;
 }
 
-/* --- General Payment Card Styling --- */
+
 .payment-card {
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.03);
     border: 1px solid #E0E0E0;
-    overflow: hidden; /* Important for rounded corners vs inner content */
+    overflow: hidden; 
     display: block;
-    text-decoration: none; /* Remove underline from links */
+    text-decoration: none; 
     margin-bottom: 15px;
 }
 
-/* For cards that are just simple rows (PhonePe, Others) */
+
 .card-flex-center {
     display: flex;
     justify-content: space-between;
@@ -84,7 +83,7 @@ body {
     padding: 15px 20px;
 }
 
-/* Hover effect for clickable links */
+
 .clickable-link:active {
     background-color: #f9f9f9;
 }
@@ -96,15 +95,14 @@ body {
     gap: 15px;
 }
 
-/* Sizing for the PhonePe logo image */
 .payment-logo {
     width: 36px;
     height: 36px;
     object-fit: contain;
-    border-radius: 25%; /* Assuming phonepe logo is circular or icon-like */
+    border-radius: 25%; 
 }
 
-/* Sizing for the "Others" card icon */
+
 .other-icon-box {
     width: 36px;
     height: 36px;
@@ -126,13 +124,13 @@ body {
     color: #999;
 }
 
-/* --- WALLET CARD SPECIFIC STYLES --- */
+
 .wallet-card-container {
-    padding: 0; /* Padding handled inside due to banner */
+    padding: 0; 
 }
 
 .warning-banner {
-    background-color: #D32F2F; /* Red color */
+    background-color: #D32F2F; 
     color: white;
     text-align: center;
     font-size: 13px;
@@ -159,7 +157,7 @@ body {
 
 .wallet-icon-box {
     font-size: 36px;
-    color: #264E86; /* Deep Blue from previous designs */
+    color: #264E86; 
 }
 
 .wallet-text-group {
@@ -190,16 +188,16 @@ body {
     color: #000;
 }
 
-/* Wallet Buttons */
+
 .wallet-actions-row {
     display: flex;
     gap: 15px;
 }
 
 .add-money-btn {
-    flex: 1; /* Makes them take equal width */
+    flex: 1; 
     padding: 12px;
-    background-color: #26A69A; /* Teal color */
+    background-color: #26A69A; 
     color: white;
     border: none;
     border-radius: 8px;
@@ -213,7 +211,6 @@ body {
     background-color: #219187;
 }
 
-/* --- BANNER --- */
 .banner-link {
     display: block;
     margin-top: 30px;
@@ -227,21 +224,16 @@ body {
     height: auto;
     display: block;
 }
-/* =========================================
-   PAGE TRANSITION ANIMATIONS 
-   ========================================= */
 
-/* Triggers when the page first loads */
 .page-enter {
     animation: slideInRight 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Triggers when JavaScript adds this class on click */
+
 .slide-out-left {
     animation: slideOutLeft 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
 }
 
-/* The actual movement definitions */
 @keyframes slideInRight {
     from { transform: translateX(100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
